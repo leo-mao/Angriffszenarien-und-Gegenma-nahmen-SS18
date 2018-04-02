@@ -1,3 +1,6 @@
+'''
+It's a implementation of RC4 Algorithm
+'''
 def KSA_PRGA(key, scrambling_step = 256):
     """
     Function to generate key steam
