@@ -1,5 +1,5 @@
 
-def load_iv_keystream(path='/home/geek/Dropbox/Semester 6/AuG/IVkeystream.txt'):
+def load_iv_keystream(path='/home/geek/Dropbox/Semester 6/AuG/rc4_testdata_1.txt'):
     '''
     :param path: path to file
     :return: (iv_set, keystream)

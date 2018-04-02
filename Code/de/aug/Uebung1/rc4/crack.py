@@ -1,11 +1,15 @@
-from Code.de.aug.praktikum1 import KSA_PRGA as gen_keystream
-from Code.de.aug.praktikum1 import load_iv_keystream as read_IVKeystream
+from Code.de.aug.Uebung1.rc4.rc4_part import KSA_PRGA as gen_keystream
+from Code.de.aug.Uebung1.rc4.iv_loader import load_iv_keystream as read_IVKeystream
 
 
 def crack_rc4_under_restrictions(scrambling_step=3):
+    '''
+    This function implements the crack of rc4, the algorithm is shown in the scripts(page 40).
+    '''
+
 
     count = {}
-    (IV_tuple_sets, keystream_firstbyte_set) = read_IVKeystream('/home/geek/Dropbox/Semester 6/AuG/IVkeystream1.txt')
+    (IV_tuple_sets, keystream_firstbyte_set) = read_IVKeystream('/home/geek/Dropbox/Semester 6/AuG/rc4_testdata_2.txt')
     for index, IV_tuple in enumerate(IV_tuple_sets):
         x = int(IV_tuple[2], 16)
         j_2 = 5 + x

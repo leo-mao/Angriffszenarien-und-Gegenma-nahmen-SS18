@@ -27,31 +27,25 @@ def KSA_PRGA(key, scrambling_step = 256):
         pre_stream[i] = pre_stream[j]
         pre_stream[j] = tmp
 
-    # Print Scrambling result:
-    print("pre_stream={pre_stream}".format(pre_stream=pre_stream))
-    key_stream = [hex(i) for i in key_stream]
-    print('key_stream={key_stream}'.format(key_stream=key_stream))
-    return pre_stream
-
     # Generate the key_stream, PRGA(key)
 
-    # i = 0
-    # j = 0
-    # key_stream = [0] * 256
-    #
-    # for index in range(0, 256):
-    #     i = (i + 1) % 256
-    #     j = (j + pre_stream[i]) % 256
-    #
-    #     tmp = pre_stream[i]
-    #     pre_stream[i] = pre_stream[j]
-    #     pre_stream[j] = tmp
-    #
-    #     key_stream[index] = pre_stream[(pre_stream[i] + pre_stream[j]) % 256]
-    #
-    # key_stream = [hex(i) for i in key_stream]
-    # print('key_stream={key_stream}'.format(key_stream=key_stream))
-    # return key_stream
+    i = 0
+    j = 0
+    key_stream = [0] * 256
+
+    for index in range(0, 256):
+        i = (i + 1) % 256
+        j = (j + pre_stream[i]) % 256
+
+        tmp = pre_stream[i]
+        pre_stream[i] = pre_stream[j]
+        pre_stream[j] = tmp
+
+        key_stream[index] = pre_stream[(pre_stream[i] + pre_stream[j]) % 256]
+
+    key_stream = [hex(i) for i in key_stream]
+    print('key_stream={key_stream}'.format(key_stream=key_stream))
+    return key_stream
 
 
 def Encrypt_Decrypt(key, text):
