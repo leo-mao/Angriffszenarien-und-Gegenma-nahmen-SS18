@@ -1,0 +1,172 @@
+% Einstellen der Dokumentenklasse (möglich: book, report, article, dinbrief, beamer, scrbook, scrreprt, scrartcl)
+% Einstellen der Dokumentoptionen (möglich: 11pt, twocolumn, oneside, titlepage, landscape, a4paper)
+\documentclass[12pt,a4paper]{article}
+    
+% Sprach- und Kodierungseinstellungen
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+
+% Literaturverzeichnis
+\usepackage{cite}
+
+% Stil des Literaturverzeichnisses festlegen (möglich: plain, abbrv, alpha, unsrt, natbib)
+\bibliographystyle{plain}
+
+% Grafikpakete für Bilder und Vektorgraphiken
+\usepackage{graphicx}
+\usepackage{float}
+
+% Weitere Pakete
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+% Für Kopfzeile
+\usepackage{fancyhdr}
+
+% Für Tabellen
+\usepackage{booktabs}
+\usepackage[table,xcdraw]{xcolor}
+
+% Dokumentformatierung (möglich: plain, empty, headings, myheadings)
+\pagestyle{plain}
+
+% Seitenzahlenstil (möglich: arabic, roman, Roman, alph, Alph)
+\pagenumbering{arabic}
+
+% Hyperlink Package
+\usepackage{hyperref}
+
+% Für URLs
+\usepackage{url}
+\def\UrlBreaks{\do\/\do-}
+
+% Für lipsum
+\usepackage{lipsum}
+
+% Für inline codes
+\usepackage{listings}
+\lstset{
+	language=bash,
+	basicstyle=\ttfamily
+}
+
+% Für unterschiedliche Enumerate Stile 
+\usepackage{enumitem}
+\newenvironment{exercise}
+	{\begin{enumerate}[label=\bfseries\alph*).]\bfseries}
+{\end{enumerate}}
+\newenvironment{answer}{\par\normalfont}{}
+
+% Farbe der Hyperlinks anpassen
+\hypersetup{
+    colorlinks,
+    linkcolor={black},
+    citecolor={blue},
+    urlcolor={black}
+}
+
+% Fancy Pagestyle ändern
+\fancypagestyle{plain}{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% Fußzeile
+\fancyfoot{}		% Fußzeile leeren
+\lfoot{Angriffszenarien und Gegenmaßnahmen SS18}
+\rfoot{Praktikum Aufgabe}
+
+
+\title{	
+\textbf{Praktikum Aufgabe\\
+		Übung 1\\}
+	    Angriffszenarien und\\ Gegenmaßnahmen \\
+		SS2018\\
+		Hochschule Emden/Leer}
+\author{Liang He und Yang Mao}
+\date{\today}
+
+             
+% Start der Inhaltsumgebung
+\begin{document}
+    % Titel anzeigen
+    \maketitle
+    \newpage
+    
+    \tableofcontents
+    \newpage
+	% Dokumentinformationen
+    \section{WEP}
+    	\begin{exercise}
+		\item Wie funktioniert Keystream-Reuse bei WEP?
+			\begin{answer}
+
+			\end{answer}
+		\item  Warum ist Keystream-Reuse möglich und so effizient?
+		\item Warum reicht es nicht aus den IV auf 32 bit zu verlängern? Begründen Sie ihre Antwort mit
+		Hilfe des „Birthday-Paradox“.
+		\item  Warum ist eine Modifikation von WEP-Nachrichten möglich? Welche Angriffe sind dadurch	denkbar?
+		\item  Wie könnte man diese Angriffe verhindern, wenn man trotzdem weiterhin RC4 bzw. eine
+		Stromchiffre verwenden möchte?
+		\item Implementieren Sie (selber) den RC4.
+		In der Datei IVKeystream.txt finden Sie Paare von IVs und ein byte große, abgefangene Chi-
+		texte einer mit WEP-Verbindung.
+		Bestimmen Sie daraus mittels einer geeigneten (eigenen) Implementierung des in der Vorle-
+		sung beschriebenen Angriffs das erste Byte des WEP-Schlüssels. Beschreiben Sie dabei kurz
+		ihre Vorgehensweise.
+    	\end{exercise}
+    
+    \section{WPA/WPA2}
+    	\begin{exercise}
+    		\item In der Vorlesung wurden mehrere Angriffe auf Basis von Keystream-Reuse für WEP-Verkehre beschrieben (vgl. auch Aufgabe 1). Sind diese auch bei WPA-/WPA2-Verkehren möglich? Begründen sie kurz Ihre Antwort.
+    			\begin{answer}
+    				Ne, das geht nicht.
+    			\end{answer}
+    		\item Unter welchen Bedingungen können WPA-Verkehre trotz des verbesserten Key-Managements immer noch entschlüsselt werden. Beschreiben Sie Ihren Angriff.
+    		\item Kann WPA2 auch noch angegriffen werden? Begründen Sie Ihre Antwort.
+    		\item Wie werden die Angriffe heutzutage, z.B. bei Eduroam, verhindert? Welche Rolle spielen dabei EAP und RADIUS bzw. DIAMETER?
+    		\item Was ist die Grundidee des Key Reinstallation Angriffs. Wie kann dieser verhindert werden?
+    		
+    	\end{exercise}
+    \section{Aircrack \& Co}
+    	\begin{exercise}
+    		\item Brechen Sie die im IT-Labor eingerichtete WLAN-Verbindung mit der für Sie vorgesehenen SSID (im Praktikum erfragen) mittels Aircrack unter zu Hilfenahme der Datei Password.txt.
+    		Beschreiben Sie kurz die einzelnen Schritte ihrer Vorgehensweise.
+    			\begin{answer}
+    				Wir haben folgende Schritte durchgeführt und die AP 'ITS-WEP' geknackt. Das Passwort ist 
+    				\begin{lstlisting}
+ED:98:ED:38:DF:BB:C3:BB:B0:D2:8C:62:B3
+    				\end{lstlisting}
+    				\begin{enumerate}[label=\alph*.]
+    					\item Mit Airmon-ng die Netzwerkkarte zu promiscuous versetzen 
+    					\begin{lstlisting}
+airmon-ng start wlan0
+    					\end{lstlisting}
+    					\item WLAN mit WEP identifizieren und Netzwerkverkehr mitschneiden. 
+    					\begin{lstlisting}
+airodump-ng wlan0mon --ivs -c {CH} --bssid {target_ssid} -w {file/to/save}
+						\end{lstlisting}
+						\item Die Menge an Netzwerkverkehr(bzw. ARP-Verkehr) kann durch 2 Arten erhöht werden. Entweder durch Abmelden des zulässige Clients oder Versuch einer falschesten Authentifizierung am AP. Wir haben leider keine zulässige Geräte vorhanden, wir müssen auf 2. Weise gehen, also eine Aireplay-attacke durchzufuhren.
+						\begin{lstlisting}
+aireplay-ng wlan0 --deauth 0 -a {target_mac}
+						\end{lstlisting}
+						Da normalerweise soll viele Gerate nach einer abmedlung wieder dem AP zu verbinden,
+						und damit können wir genug ARP Requests und ACKs sammeln.
+						\item Wenn c.a. 1500 Paket gesammelt wurden, können wir schon mit Aircrack-ng das Passwort zu knacken.
+						\begin{lstlisting}
+aircrack-ng {.ivs file} -b {target_ssid}
+						\end{lstlisting}
+    				\end{enumerate}
+    			\end{answer}
+    		\item (Optional) Versuchen Sie, da Sie nun den PSK kennen, die Verkehre mittels eines geeigneten Tools (z.B.Wireshark) aufzuzeichnen und zu entschlüsseln.
+    		
+    		\item (Optional) Machen Sie sich mit WPS-Pin-Verfahren vertraut. Versuchen Sie die WLAN-Verbindung
+    		mittels WPS anzugreifen.
+    		\begin{answer}
+    			Nicht gemacht.
+    		\end{answer}
+
+    		
+    	\end{exercise}
+    	
+\end{document}
