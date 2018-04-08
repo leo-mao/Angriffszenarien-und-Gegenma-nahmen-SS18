@@ -115,9 +115,9 @@
 			\end{answer}
 		\item  Warum ist Keystream-Reuse möglich und so effizient?
 		\begin{answer}
-		Da für alle Nachrichten gleichen Schlüssel $k$ verwendet wird, liegt es nur noch am IVs, das Auftreten gleicher Schlüsselstrom zu verhindern.
+		Da für alle Nachrichten in WEP gleichen Schlüssel $k$ verwendet wird, liegt es nur noch am IVs, das Auftreten gleicher Schlüsselstrom zu verhindern. Die IVs hat zwar $2^{24}$ Möglichkeiten, aber laut "Birthday-Paradox", eine Dopplung hat mehr als 50\% Chance in etwa $1.2\times\sqrt{2^{24}} \approx 5000$ Nachrichten aufzutreten, die in eine Minute gesammelt werden können.
 		\end{answer}
-		\item Warum reicht es nicht aus den IV auf 32 bit zu verlängern? Begründen Sie ihre Antwort mit
+		\item Warum reicht es nicht aus den IV auf 32 bit zu verlängern? Begründen Sie ihre Antwort mit 
 		Hilfe des „Birthday-Paradox“.
 		\item  Warum ist eine Modifikation von WEP-Nachrichten möglich? Welche Angriffe sind dadurch	denkbar?
 		\item  Wie könnte man diese Angriffe verhindern, wenn man trotzdem weiterhin RC4 bzw. eine
