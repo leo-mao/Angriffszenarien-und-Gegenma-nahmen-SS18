@@ -154,9 +154,12 @@
     	\begin{exercise}
     		\item In der Vorlesung wurden mehrere Angriffe auf Basis von Keystream-Reuse für WEP-Verkehre beschrieben (vgl. auch Aufgabe 1). Sind diese auch bei WPA-/WPA2-Verkehren möglich? Begründen sie kurz Ihre Antwort.
     			\begin{answer}
-    				Das geht nicht. Bei WPA-/WPA2 wird PreSharedKey verwendet und jeder Client bekommt einen dynamisch erzeugte Schlüssel.
+    				Das geht nicht. Bei WPA-/WPA2 wird PreSharedKey verwendet und jeder Client bekommt einen dynamisch erzeugte Schlüssel. Außerdem wird IVs bei WPA-/WPA2 nicht direkt zum Schlüsselstromerzeugen verwendet.
     			\end{answer}
     		\item Unter welchen Bedingungen können WPA-Verkehre trotz des verbesserten Key-Managements immer noch entschlüsselt werden. Beschreiben Sie Ihren Angriff.
+    		\begin{answer}
+    			
+    		\end{answer}
     		\item Kann WPA2 auch noch angegriffen werden? Begründen Sie Ihre Antwort.
     		\item Wie werden die Angriffe heutzutage, z.B. bei Eduroam, verhindert? Welche Rolle spielen dabei EAP und RADIUS bzw. DIAMETER?
     		\item Was ist die Grundidee des Key Reinstallation Angriffs. Wie kann dieser verhindert werden?
