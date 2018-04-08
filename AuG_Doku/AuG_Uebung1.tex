@@ -100,6 +100,9 @@
     	\begin{exercise}
 		\item Wie funktioniert Keystream-Reuse bei WEP?
 			\begin{answer}
+			Bei WEP wird der Schlüssel K zusammen mit einem Initialisierungsvektor IV verwendet, um mit dem RC4-Algorithmus eine Byte-Schlüsselfolge zu erzeugen. Der Klartext wird mit dem Bytestrom bitweise XOR-verknüpft.\\
+			Da der IV lediglich 24 bit lang ist, gibt es eine große Möglichkeit, dass in einem Zeitraum eine Dopplung von gleichen IV auftreten können. In den Fall, der Klartext lässt scih berechnen durch folgenden Gleichungen:
+			  
 
 			\end{answer}
 		\item  Warum ist Keystream-Reuse möglich und so effizient?
