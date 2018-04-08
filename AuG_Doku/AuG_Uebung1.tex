@@ -101,7 +101,7 @@
 		\item Wie funktioniert Keystream-Reuse bei WEP?
 			\begin{answer}
 			Bei WEP wird der Schlüssel $k$ zusammen mit einem Initialisierungsvektor IV verwendet, um mit dem RC4-Algorithmus eine Byte-Schlüsselfolge zu erzeugen. Der Klartext wird mit dem Bytestrom bitweise XOR-verknüpft.\\
-			Der gleiche Schlüsselstrom $s$ mehrfach verwerdet wird, so kann man durch XOR-Verknüpfung der beiden Chiffretexte Informationen über die Klartexte erhalten:
+			Der gleiche Schlüsselstrom $s$ mehrfach verwendet wird, so kann man durch XOR-Verknüpfung der beiden Chiffretexte Informationen über die Klartexte erhalten:
 			\[m_1 \oplus s = c_1\]
 			\[m_2 \oplus s = c_2\]
 			\[\Rightarrow (m_1 \oplus s)\oplus(m_2\oplus s)=m_1\oplus m_2\]
