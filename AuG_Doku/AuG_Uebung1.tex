@@ -100,13 +100,13 @@
     	\begin{exercise}
 		\item Wie funktioniert Keystream-Reuse bei WEP?
 			\begin{answer}
-			Bei WEP wird der Schlüssel K zusammen mit einem Initialisierungsvektor IV verwendet, um mit dem RC4-Algorithmus eine Byte-Schlüsselfolge zu erzeugen. Der Klartext wird mit dem Bytestrom bitweise XOR-verknüpft.\\
-			Der gleiche Schlüsselstrom s mehrfach verwerdet wird, so kann man durch XOR-Verknüpfung der beiden Chiffretexte Informationen über die Klartexte erhalten:
+			Bei WEP wird der Schlüssel $k$ zusammen mit einem Initialisierungsvektor IV verwendet, um mit dem RC4-Algorithmus eine Byte-Schlüsselfolge zu erzeugen. Der Klartext wird mit dem Bytestrom bitweise XOR-verknüpft.\\
+			Der gleiche Schlüsselstrom $s$ mehrfach verwerdet wird, so kann man durch XOR-Verknüpfung der beiden Chiffretexte Informationen über die Klartexte erhalten:
 			\[m_1 \oplus s = c_1\]
 			\[m_2 \oplus s = c_2\]
 			\[\Rightarrow (m_1 \oplus s)\oplus(m_2\oplus s)=m_1\oplus m_2\]
-			Je
-			Da der IV lediglich 24 bit lang ist, gibt es eine große Möglichkeit, dass in einem Zeitraum eine Dopplung von gleichen IV auftreten können. In den Fall, der Klartext lässt scih berechnen durch folgenden Gleichungen:
+			
+			Da für alle Nachrichten gleichen Schlüssel $k$ verwerndet wird, liegt es nur noch am  IVs, das Auftreten gleicher Schlüsselstrom zu verhindern. Der IV ist jedoch lediglich 24 bit lang und es eine große Möglichkeit, dass in einem gewissen Zeitraum eine Dopplung von gleichen IV auftreten können. In den Fall, der Klartext lässt scih berechnen durch folgenden Gleichungen:
 			
 
 			\end{answer}
