@@ -145,7 +145,7 @@
 		\item In der Datei IVKeystream.txt finden Sie Paare von IVs und ein byte große, abgefangene Chitexte einer mit WEP-Verbindung. Bestimmen Sie daraus mittels einer geeigneten (eigenen) Implementierung des in der Vorlesung beschriebenen Angriffs das erste Byte des WEP-Schlüssels. Beschreiben Sie dabei kurz ihre Vorgehensweise.
 		\begin{answer}
 		Die Antwort ist 'FF'.
-		Wir haben erst 3 Runden des KSA verwendet und die Folgende Formel verwendet:
+		Wir haben erst 3 Runden des KSA in Python implementiert und die folgende Formeln verwendet:
 		\[Z=S_N[S_N[1]+S_N[S_N[1]]]=S_A+4[S_{A+4}[S_{A+4}[1]]]=S_{A+4}[0+S_{A+4}[0]]=S_{A+3}[j_{A+3}]\]
 		\end{answer}
     	\end{exercise}
