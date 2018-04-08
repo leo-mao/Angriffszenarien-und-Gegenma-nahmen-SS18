@@ -140,13 +140,12 @@
 		\end{answer}
 		\item Implementieren Sie (selber) den RC4.
 		\begin{answer}
-					Code ist Anhang.
+					Code wurde in Praktikum gezeigt.
 		\end{answer}
 		\item In der Datei IVKeystream.txt finden Sie Paare von IVs und ein byte große, abgefangene Chitexte einer mit WEP-Verbindung. Bestimmen Sie daraus mittels einer geeigneten (eigenen) Implementierung des in der Vorlesung beschriebenen Angriffs das erste Byte des WEP-Schlüssels. Beschreiben Sie dabei kurz ihre Vorgehensweise.
 		\begin{answer}
 		Wir haben erst 3 Runden des KSA verwendet und die Folgende Formel verwendet:
 		\[Z=S_N[S_N[1]+S_N[S_N[1]]]=S_A+4[S_{A+4}[S_{A+4}[1]]]=S_{A+4}[0+S_{A+4}[0]]=S_{A+3}[j_{A+3}]\]
-		Code ist Anhang.
 		\end{answer}
     	\end{exercise}
     
@@ -172,6 +171,7 @@
     		\item Was ist die Grundidee des Key Reinstallation Angriffs. Wie kann dieser verhindert werden?
     		\begin{answer}
     		Bei Key Reinstallation Angriff werden 4-Wege-Handshake Phase gestört und damit der selbe Schlüssel mehrmals verwendet wird.
+    		
     		\end{answer}
     		
     	\end{exercise}
