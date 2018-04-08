@@ -106,7 +106,7 @@
     	\begin{exercise}
 		\item Wie funktioniert Keystream-Reuse bei WEP?
 			\begin{answer}
-			Bei WEP wird der Schlüssel $k$ zusammen mit einem \ref{iv} verwendet, um mit dem RC4-Algorithmus eine Byte-Schlüsselfolge zu erzeugen. Der Klartext wird mit dem Bytestrom bitweise XOR-verknüpft.\\
+			Bei WEP wird der Schlüssel $k$ zusammen mit einem Initialisierungsvektor(IV) verwendet, um mit dem RC4-Algorithmus eine Byte-Schlüsselfolge zu erzeugen. Der Klartext wird mit dem Bytestrom bitweise XOR-verknüpft.\\
 			Der gleiche Schlüsselstrom $s$ mehrfach verwendet wird, so kann man durch XOR-Verknüpfung der beiden Chiffretexte Informationen über die Klartexte erhalten:
 			\[m_1 \oplus s = c_1\]
 			\[m_2 \oplus s = c_2\]
@@ -125,7 +125,7 @@
 		\item  Warum ist eine Modifikation von WEP-Nachrichten möglich? Welche Angriffe sind dadurch denkbar?
 		\begin{answer}
 		Die Verschlüsselung die Integrität nicht schützt kann. Die Integirtät von WEP Paket kann nur durch CRC-Prüfsumme geprüft. Die CRC-Prüfsumme ist linear und es gilt:
-		\[CRC---32(x\oplus)y=CRC---32(x)\oplus CRC---32(y)\]
+		\[CRC\text{-}32(x\oplus y)=CRC\text{-}32(x)\oplus CRC\text{-}32(y)\]
 		\end{answer}
 		\item  Wie könnte man diese Angriffe verhindern, wenn man trotzdem weiterhin RC4 bzw. eine
 		Stromchiffre verwenden möchte?
