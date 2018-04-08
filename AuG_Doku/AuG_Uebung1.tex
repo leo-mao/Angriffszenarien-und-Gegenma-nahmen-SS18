@@ -39,8 +39,9 @@
 
 % For Acronyms and Glossaries
 \usepackage{glossaries}
-\makeglossaries
 
+\newacronym{iv}{IV}{Initialisierungsvektor}
+\makeglossaries
 % Für URLs
 \usepackage{url}
 \def\UrlBreaks{\do\/\do-}
@@ -104,7 +105,7 @@
     	\begin{exercise}
 		\item Wie funktioniert Keystream-Reuse bei WEP?
 			\begin{answer}
-			Bei WEP wird der Schlüssel $k$ zusammen mit einem Initialisierungsvektor IV verwendet, um mit dem RC4-Algorithmus eine Byte-Schlüsselfolge zu erzeugen. Der Klartext wird mit dem Bytestrom bitweise XOR-verknüpft.\\
+			Bei WEP wird der Schlüssel $k$ zusammen mit einem \ref{iv} verwendet, um mit dem RC4-Algorithmus eine Byte-Schlüsselfolge zu erzeugen. Der Klartext wird mit dem Bytestrom bitweise XOR-verknüpft.\\
 			Der gleiche Schlüsselstrom $s$ mehrfach verwendet wird, so kann man durch XOR-Verknüpfung der beiden Chiffretexte Informationen über die Klartexte erhalten:
 			\[m_1 \oplus s = c_1\]
 			\[m_2 \oplus s = c_2\]
@@ -114,7 +115,7 @@
 			\end{answer}
 		\item  Warum ist Keystream-Reuse möglich und so effizient?
 		\begin{answer}
-			Der verwendete Schlüsselstrom ist nur von IV 
+		Da für alle Nachrichten gleichen Schlüssel $k$ verwendet wird, liegt es nur noch am IVs, das Auftreten gleicher Schlüsselstrom zu verhindern.
 		\end{answer}
 		\item Warum reicht es nicht aus den IV auf 32 bit zu verlängern? Begründen Sie ihre Antwort mit
 		Hilfe des „Birthday-Paradox“.
