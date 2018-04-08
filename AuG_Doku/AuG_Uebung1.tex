@@ -133,7 +133,10 @@
 		Ein Angreifer kann auch gezielt die Bits der IP-Zieladresse so abändern, dass das Paket in ein vom Angreifer kontrolliertes Netzwerk umgeleitet wird. Er kann dann die andere Headerfeld so abändern, dass die Prüfsumme gleich beleibt. AP wird die Paket dann entschlüsselt und umleitet.
 		\end{answer}
 		\item  Wie könnte man diese Angriffe verhindern, wenn man trotzdem weiterhin RC4 bzw. eine Stromchiffre verwenden möchte?
-		
+		\begin{answer}
+		Die Komplexität von IV weiter vergrößert werden(z.B 256 Bit oder 512 Bit), damit die Wahrscheinlichkeit der Dopplung vergingen. Oder durch Nutzung von Nicht-linearen Prüfsummen.
+		 
+		\end{answer}
 		\item Implementieren Sie (selber) den RC4.
 		In der Datei IVKeystream.txt finden Sie Paare von IVs und ein byte große, abgefangene Chi-
 		texte einer mit WEP-Verbindung. Bestimmen Sie daraus mittels einer geeigneten (eigenen) Implementierung des in der Vorlesung beschriebenen Angriffs das erste Byte des WEP-Schlüssels. Beschreiben Sie dabei kurz
