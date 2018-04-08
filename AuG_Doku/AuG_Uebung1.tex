@@ -124,7 +124,8 @@
 		\end{answer}
 		\item  Warum ist eine Modifikation von WEP-Nachrichten möglich? Welche Angriffe sind dadurch denkbar?
 		\begin{answer}
-		Die Verschlüsselung die Integrität nicht schützt kann. Die Integirtät von Paket kann nur durch CRC-Prüfsumme geprüft. 
+		Die Verschlüsselung die Integrität nicht schützt kann. Die Integirtät von WEP Paket kann nur durch CRC-Prüfsumme geprüft. Die CRC-Prüfsumme ist linear und es gilt:
+		\[CRC---32(x\oplus)y=CRC---32(x)\oplus CRC---32(y)\]
 		\end{answer}
 		\item  Wie könnte man diese Angriffe verhindern, wenn man trotzdem weiterhin RC4 bzw. eine
 		Stromchiffre verwenden möchte?
