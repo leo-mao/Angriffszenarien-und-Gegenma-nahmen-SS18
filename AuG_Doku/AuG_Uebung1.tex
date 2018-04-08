@@ -122,7 +122,10 @@
 		\begin{answer}
 		Laut "Birthday-Paradox" ist die Chance, dass ein IV mit 32 bit eine Dopplung in etwa $1.2\times\sqrt{2^{32}} \approx 2^{16}$,mehr als 50\%. Obwohl dadurch die Benötigte Zeit des Angriffs verlängern wird, aber trotzdem nicht verhindern.   
 		\end{answer}
-		\item  Warum ist eine Modifikation von WEP-Nachrichten möglich? Welche Angriffe sind dadurch	denkbar?
+		\item  Warum ist eine Modifikation von WEP-Nachrichten möglich? Welche Angriffe sind dadurch denkbar?
+		\begin{answer}
+		Die Verschlüsselung die Integrität nicht schützt kann. Die Integirtät von Paket kann nur durch CRC-Prüfsumme geprüft. 
+		\end{answer}
 		\item  Wie könnte man diese Angriffe verhindern, wenn man trotzdem weiterhin RC4 bzw. eine
 		Stromchiffre verwenden möchte?
 		\item Implementieren Sie (selber) den RC4.
