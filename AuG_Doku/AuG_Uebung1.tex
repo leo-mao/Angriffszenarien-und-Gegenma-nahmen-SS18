@@ -28,6 +28,7 @@
 \usepackage{booktabs}
 \usepackage{xcolor}
 
+% Farbe für Python Code
 \definecolor{deepblue}{rgb}{0,0,0.5}
 \definecolor{deepred}{rgb}{0.6,0,0}
 \definecolor{deepgreen}{rgb}{0,0.5,0}
@@ -35,6 +36,9 @@
 \definecolor{darkgray}{rgb}{.4,.4,.4}
 \definecolor{purple}{rgb}{0.65,  0.12,  0.82}
 
+% Fonts for Python code, default  fixed  font  does  not  support  bold  face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12}  %  for  bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}    %  for  normal
 
 
 % Dokumentformatierung (möglich: plain, empty, headings, myheadings)
@@ -64,7 +68,7 @@
 \usepackage{listings}
 \lstset{
 	language=bash,
-	basicstyle=\ttfamily
+	basicstyle=\ttm
 }
 \lstset{ % Python style for highlighting
 	language=Python,
@@ -207,22 +211,22 @@ ED:98:ED:38:DF:BB:C3:BB:B0:D2:8C:62:B3
     				\end{lstlisting}
     				\begin{enumerate}[label=\alph*.]
     					\item Mit Airmon-ng die Netzwerkkarte zu promiscuous versetzen 
-    					\begin{lstlisting}
+    					\begin{lstlisting}{language=bash}
 airmon-ng start wlan0
     					\end{lstlisting}
     					\item WLAN mit WEP identifizieren und Netzwerkverkehr mitschneiden. 
-    					\begin{lstlisting}
+    					\begin{lstlisting}[language=bash]
 airodump-ng wlan0mon --ivs -c {CH} --bssid {target_ssid} -w {file/to/save}
 						\end{lstlisting}
 						\item Die Menge an Netzwerkverkehr(bzw. ARP-Verkehr) kann durch 2 Arten erhöht werden. Entweder durch Abmelden des zulässige Clients oder Versuch einer falschesten Authentifizierung am AP. Wir haben leider keine zulässige Geräte vorhanden, wir müssen auf 2. Weise gehen, also eine Aireplay-attacke durchzufuhren.
-						\begin{lstlisting}
+						\begin{lstlisting}[language=bash]
 aireplay-ng wlan0 --deauth 0 -a {target_mac}
 						\end{lstlisting}
 						Da normalerweise soll viele Gerate nach einer abmedlung wieder dem AP zu verbinden,
 						und damit können wir genug ARP Requests und ACKs sammeln.
 						\item Wenn c.a. 1500 Paket gesammelt wurden, können wir schon mit Aircrack-ng das Passwort zu knacken.
 						\begin{lstlisting}
-aircrack-ng {.ivs file} -b {target_ssid}
+aircrack-ng {.ivs file} -b {target_ssid}[language=bash]
 						\end{lstlisting}
     				\end{enumerate}
     			\end{answer}
@@ -231,8 +235,7 @@ aircrack-ng {.ivs file} -b {target_ssid}
     		\item (Optional) Machen Sie sich mit WPS-Pin-Verfahren vertraut. Versuchen Sie die WLAN-Verbindung
     		mittels WPS anzugreifen.
     		\begin{answer}
-    			Nicht gemacht.
     		\end{answer}
     	\end{exercise}
-    \newpage
+    
 \end{document}
