@@ -10,7 +10,7 @@ def crack_rc4_under_restrictions(scrambling_step=3):
     count = {}
     test_file = 'rc4_testdata_2.txt'
     path = os.path.dirname(os.getcwd()) + '/' + test_file
-    
+
     (IV_tuple_sets, keystream_firstbyte_set) = read_IVKeystream(path)
     for index, IV_tuple in enumerate(IV_tuple_sets):
         x = int(IV_tuple[2], 16)

